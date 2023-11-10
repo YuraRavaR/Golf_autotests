@@ -22,11 +22,8 @@ public class Readxls {
         int totalRows = sheet.getLastRowNum();
         int totalColumns = sheet.getRow(0).getPhysicalNumberOfCells() - 1; // "-1" - minus one column for the "explanation" field
 
-        Object obj[][] = new Object[totalRows][totalColumns]; //organizing data into object
+        Object[][] obj = new Object[totalRows][totalColumns]; //organizing data into object
         for (int i = 0; i < totalRows; i++) {
-//            obj[i][0] = sheet.getRow(i + 1).getCell(0).toString();
-//            obj[i][1] = sheet.getRow(i + 1).getCell(1).toString();
-//            obj[i][2] = sheet.getRow(i + 1).getCell(2).toString();
             XSSFCell cell1 = sheet.getRow(i + 1).getCell(0);
             XSSFCell cell2 = sheet.getRow(i + 1).getCell(1);
             XSSFCell cell3 = sheet.getRow(i + 1).getCell(2);
@@ -47,7 +44,7 @@ public class Readxls {
         int totalRows = sheet.getLastRowNum();
         int totalColumns = sheet.getRow(0).getPhysicalNumberOfCells() - 1; // "-1" - minus one column for the "explanation" field
 
-        Object obj[][] = new Object[totalRows][totalColumns]; //organizing data into object
+        Object[][] obj = new Object[totalRows][totalColumns]; //organizing data into object
         for (int i = 0; i < totalRows; i++) {
             obj[i][0] = sheet.getRow(i + 1).getCell(0).toString();
             obj[i][1] = sheet.getRow(i + 1).getCell(1).toString();
@@ -65,7 +62,7 @@ public class Readxls {
         int totalRows = sheet.getLastRowNum();
         int totalColumns = sheet.getRow(0).getPhysicalNumberOfCells() - 1; // "-1" - minus one column for the "explanation" field
 
-        Object obj[][] = new Object[totalRows][totalColumns]; //organizing data into object
+        Object[][] obj = new Object[totalRows][totalColumns]; //organizing data into object
         for (int i = 0; i < totalRows; i++) {
             XSSFCell cell1 = sheet.getRow(i + 1).getCell(0);
             XSSFCell cell2 = sheet.getRow(i + 1).getCell(1);
@@ -91,7 +88,7 @@ public class Readxls {
         int totalRows = sheet.getLastRowNum();
         int totalColumns = sheet.getRow(0).getPhysicalNumberOfCells() - 1; // "-1" - minus one column for the "explanation" field
 
-        Object obj[][] = new Object[totalRows][totalColumns]; //organizing data into object
+        Object[][] obj = new Object[totalRows][totalColumns]; //organizing data into object
         for (int i = 0; i < totalRows; i++) {
             XSSFCell cell1 = sheet.getRow(i + 1).getCell(0);
             XSSFCell cell2 = sheet.getRow(i + 1).getCell(1);

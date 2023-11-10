@@ -69,12 +69,12 @@ public abstract class AbstractPage {
         element.click();
     }
 
-    public void clickByElementFromDropdown(WebElement dropDownList, WebElement element) {
-        clickToElement(dropDownList); //open drop down
-        clickToElement(element);  //select Dropdown element
-        WebElement backdrop = driver.findElement(By.cssSelector(".MuiBackdrop-root"));
-        clickToElement(backdrop);
-    }
+//    public void clickByElementFromDropdown(WebElement dropDownList, WebElement element) {
+//        clickToElement(dropDownList); //open drop down
+//        clickToElement(element);  //select Dropdown element
+//        WebElement backdrop = driver.findElement(By.cssSelector(".MuiBackdrop-root"));
+//        clickToElement(backdrop);
+//    }
 
 
 
