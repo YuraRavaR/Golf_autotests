@@ -49,6 +49,7 @@ public abstract class AbstractPage {
             return false;
         }
     }
+
     private void textAssert(String pattern, String text) {
         String locator = String.format(pattern, text);
         try {
@@ -62,9 +63,19 @@ public abstract class AbstractPage {
             throw new AssertionError(String.format("No element with text: %s is found on page", text));
         }
     }
+
     public void clickToElement(WebElement element) {
         wait.until(ExpectedConditions.visibilityOf(element));
         element.click();
     }
+
+    public void clickByElementFromDropdown(WebElement dropDownList, WebElement element) {
+        clickToElement(dropDownList); //open drop down
+        clickToElement(element);  //select Dropdown element
+        WebElement backdrop = driver.findElement(By.cssSelector(".MuiBackdrop-root"));
+        clickToElement(backdrop);
+    }
+
+
 
 }

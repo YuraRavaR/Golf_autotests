@@ -20,4 +20,8 @@ public class XlsDataProvider {
     public static Object[][] excelDataInvalidRegisterCredentials() throws IOException {
         return new Readxls().readInvalidRegisterCredentials();
     }
+    @DataProvider(name = "InvalidChangePasswordData")
+    public static Object[][] excelDataInvalidChangePassword() throws IOException {
+        return new Readxls().readInvalidChangePasswordData();
+    }
 }

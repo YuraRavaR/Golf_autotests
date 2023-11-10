@@ -20,6 +20,8 @@ public class LoginPage extends AbstractPage {
     WebElement lastNameInput;
     @FindBy(xpath = "//button[text()='Log in']")
     WebElement loginBtn;
+    @FindBy(xpath = "//div[text()='My profile']")
+    WebElement myProfileBtn;
 
     @FindBy(xpath = "//button[text()='Sign up']")
     WebElement signUpButton;
@@ -38,6 +40,9 @@ public class LoginPage extends AbstractPage {
 
     public void clickSignUpBtn() {
         super.clickToElement(signUpButton);
+    }
+    public void clickMyProfileBtn(){
+        super.clickToElement(myProfileBtn);
     }
 
     public void signUp(String firstName, String lastName, String email, String password) {

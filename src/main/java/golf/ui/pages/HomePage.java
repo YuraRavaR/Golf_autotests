@@ -23,6 +23,9 @@ public class HomePage extends AbstractPage {
     @FindBy(xpath = "//div[contains(text(), 'HomePage')]")
     WebElement clientPanelElement;
 
+    @FindBy(xpath = "//a[@href='/stock']")
+    WebElement stockBtn;
+
 
 
     public HomePage(WebDriver driver, WebDriverWait wait) {
@@ -39,5 +42,9 @@ public class HomePage extends AbstractPage {
 
     public boolean isUserHomePageLoaded() {
         return super.waitPageLoaded(clientPanelElement);
+    }
+
+    public void clickStockBtn(){
+        super.clickToElement(stockBtn);
     }
 }
