@@ -8,7 +8,6 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.List;
-import java.util.Random;
 
 public class StocksAdminPage extends AbstractPage {
     @FindBy(xpath = "//label[text()='Category']/following-sibling::div")
@@ -29,6 +28,11 @@ public class StocksAdminPage extends AbstractPage {
 
     @FindBy(xpath = "(//span[@class='MuiSlider-valueLabel css-3besu'])[2]")
     WebElement maxPriceRangeSlider;
+
+    @FindBy(xpath = "//div[text()='Price']")
+    WebElement priceSortBtn;
+    @FindBy(xpath = "//div[text()='Quantity']")
+    WebElement quantitySortBtn;
 
 
     public StocksAdminPage(WebDriver driver, WebDriverWait wait) {
@@ -114,5 +118,74 @@ public class StocksAdminPage extends AbstractPage {
             }
         }
         return true;
+    }
+
+    public void clickPriceSortBtn() {
+        super.clickToElement(priceSortBtn);
+    }
+    public void clickQuantitySortBtn() {
+        super.clickToElement(quantitySortBtn);
+    }
+
+    public boolean isProductPriceSortedHighToLow() {
+        List<WebElement> actualProductsPriceList = driver.findElements(By.cssSelector("td:nth-child(5)"));
+        return isListSortedHighToLow(actualProductsPriceList);
+    }
+
+    public boolean isProductPriceSortedLowToHigh() {
+        List<WebElement> actualProductsPriceList = driver.findElements(By.cssSelector("td:nth-child(5)"));
+        return isListSortedLowToHigh(actualProductsPriceList);
+    }
+
+    public boolean isProductQuantitySortedLowToHigh() {
+        List<WebElement> actualProductsPriceList = driver.findElements(By.cssSelector("td:nth-child(8)"));
+        return isListSortedLowToHigh(actualProductsPriceList);
+    }
+    public boolean isProductQuantitySortedHighToLow() {
+        List<WebElement> actualProductsPriceList = driver.findElements(By.cssSelector("td:nth-child(8)"));
+        return isListSortedHighToLow(actualProductsPriceList);
+    }
+
+    private boolean isListSortedHighToLow(List<WebElement> actualProductsPriceList) {
+        for (int i = 0; i < actualProductsPriceList.size() - 1; i++) {
+            WebElement currentPriceElement = actualProductsPriceList.get(i);
+            WebElement nextPriceElement = actualProductsPriceList.get(i + 1);
+
+            String currentPriceValue = currentPriceElement.getText();
+            String nextPriceValue = nextPriceElement.getText();
+
+            double currentProductPrice = parsePrice(currentPriceValue);
+            double nextProductPrice = parsePrice(nextPriceValue);
+
+            if (currentProductPrice > nextProductPrice) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    private boolean isListSortedLowToHigh(List<WebElement> actualProductsPriceList) {
+        for (int i = 0; i < actualProductsPriceList.size() - 1; i++) {
+            WebElement currentPriceElement = actualProductsPriceList.get(i);
+            WebElement nextPriceElement = actualProductsPriceList.get(i + 1);
+
+            String currentPriceValue = currentPriceElement.getText();
+            String nextPriceValue = nextPriceElement.getText();
+
+            double currentProductPrice = parsePrice(currentPriceValue);
+            double nextProductPrice = parsePrice(nextPriceValue);
+
+            if (currentProductPrice < nextProductPrice) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    private double parsePrice(String priceString) {
+        String numericPriceValue = priceString.replaceAll("[^0-9.]", "");
+        return Double.parseDouble(numericPriceValue);
     }
 }

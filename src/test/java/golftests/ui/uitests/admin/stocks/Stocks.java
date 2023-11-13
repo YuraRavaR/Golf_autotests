@@ -50,4 +50,39 @@ public class Stocks extends BaseTest {
         stocksAdminPage.selectCategoriesInDropdown(selectedCategoriesList);
         Assert.assertTrue(stocksAdminPage.areAllCategoriesMatching(selectedCategoriesList));
     }
+
+    @Test
+    public void checkSortByPriceHighToLow() {
+        stocksAdminPage.clickPriceSortBtn();
+        Assert.assertTrue(stocksAdminPage.isProductPriceSortedHighToLow());
+    }
+
+    @Test
+    public void checkSortByPriceLowToHigh() {
+        stocksAdminPage.clickPriceSortBtn();
+        stocksAdminPage.clickPriceSortBtn();
+        Assert.assertTrue(stocksAdminPage.isProductPriceSortedLowToHigh());
+    }
+
+    @Test
+    public void checkSortByQuantityHighToLow() {
+        stocksAdminPage.clickQuantitySortBtn();
+        Assert.assertTrue(stocksAdminPage.isProductQuantitySortedHighToLow());
+    }
+
+    @Test
+    public void checkSortByQuantityLowToHigh() {
+        stocksAdminPage.clickQuantitySortBtn();
+        stocksAdminPage.clickQuantitySortBtn();
+        Assert.assertTrue(stocksAdminPage.isProductQuantitySortedLowToHigh());
+    }
+
+    @Test
+    public void checkSortAndFilterByPriceAndCategory() {
+        Assert.assertTrue(stocksAdminPage.setFilterPrice());
+        stocksAdminPage.selectOneCategoryInDropdown("Protein Bar");
+        Assert.assertTrue(stocksAdminPage.areAllCategoriesMatching("Protein Bar"));
+        stocksAdminPage.clickPriceSortBtn();
+        Assert.assertTrue(stocksAdminPage.isProductPriceSortedHighToLow());
+    }
 }
