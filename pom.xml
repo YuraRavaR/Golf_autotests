@@ -6,7 +6,7 @@
 
     <groupId>org.example</groupId>
     <artifactId>golf_autotests</artifactId>
-    <version>1.0.0</version>
+    <version>1.1.0</version>
 
     <dependencies>
         <dependency>
@@ -50,13 +50,59 @@
             <artifactId>log4j-core</artifactId>
             <version>2.17.1</version>
         </dependency>
+        <dependency>
+            <groupId>io.qameta.allure</groupId>
+            <artifactId>allure-testng</artifactId>
+            <version>2.22.2</version>
+        </dependency>
 
     </dependencies>
-
 
     <properties>
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
     </properties>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>io.qameta.allure</groupId>
+                <artifactId>allure-maven</artifactId>
+                <version>2.12.0</version>
+                <configuration>
+                    <reportVersion>2.12.0</reportVersion>
+                    <resultsDirectory>${project.build.directory}/allure-results</resultsDirectory>
+                    <reportDirectory>${project.build.directory}/allure-reports</reportDirectory>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.20</version>
+                <configuration>
+                    <suiteXmlFiles>
+                        <suiteXmlFile>testng.xml</suiteXmlFile>
+                    </suiteXmlFiles>
+                    <testFailureIgnore>true</testFailureIgnore>
+                    <systemProperties>
+                        <property>
+                            <name>allure.results.directory</name>
+                            <value>${project.build.directory}/allure-results</value>
+                        </property>
+                    </systemProperties>
+                </configuration>
+            </plugin>
+        </plugins>
+
+<!--            <resources>-->
+<!--                <resource>-->
+<!--                    <directory>src/main/resources</directory>-->
+<!--                    <includes>-->
+<!--                        <include>**/*.properties</include>-->
+<!--                    </includes>-->
+<!--                    <filtering>false</filtering>-->
+<!--                </resource>-->
+<!--            </resources>-->
+    </build>
 
 </project>

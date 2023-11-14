@@ -1,5 +1,6 @@
 package golf.ui.pages;
 
+import io.qameta.allure.Allure;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -44,6 +45,7 @@ public class StocksAdminPage extends AbstractPage {
     }
 
     public boolean setFilterPrice() {
+        Allure.step("Set filter price");
         super.clickToElement(priceRangeSlider);
         Actions actions = new Actions(driver);
 //        Random random = new Random();
@@ -80,6 +82,7 @@ public class StocksAdminPage extends AbstractPage {
     }
 
     public void selectOneCategoryInDropdown(String categoryName) {
+        Allure.step("Select one category: " + categoryName + "in dropdown");
         clickToElement(categoryDropDownList);
         String categoryXpath = String.format(categoryCheckbox, categoryName);
         WebElement categoryElement = driver.findElement(By.xpath(categoryXpath));
@@ -88,6 +91,7 @@ public class StocksAdminPage extends AbstractPage {
     }
 
     public void selectCategoriesInDropdown(List<String> categoryNames) {
+        Allure.step("Select " + categoryNames.size() + " categories: in dropdown");
         clickToElement(categoryDropDownList);
         for (String categoryName : categoryNames) {
             String categoryXpath = String.format(categoryCheckbox, categoryName);
@@ -98,6 +102,7 @@ public class StocksAdminPage extends AbstractPage {
     }
 
     public boolean areAllCategoriesMatching(String expectedCategoryName) {
+        Allure.step("Check all categories matching: " + expectedCategoryName);
         List<WebElement> actualCategoryList = driver.findElements(By.cssSelector("td:nth-child(4)"));
         for (WebElement actualCategory : actualCategoryList) {
             if (!actualCategory.getText().equals(expectedCategoryName)) {
@@ -108,6 +113,7 @@ public class StocksAdminPage extends AbstractPage {
     }
 
     public boolean areAllCategoriesMatching(List<String> expectedCategoryNames) {
+        Allure.step("Check all categories matching ");
         List<WebElement> actualProductsCategoryList = driver.findElements(By.cssSelector("td:nth-child(4)"));
 
         for (WebElement actualCategory : actualProductsCategoryList) {
@@ -123,25 +129,31 @@ public class StocksAdminPage extends AbstractPage {
     public void clickPriceSortBtn() {
         super.clickToElement(priceSortBtn);
     }
+
     public void clickQuantitySortBtn() {
         super.clickToElement(quantitySortBtn);
     }
 
     public boolean isProductPriceSortedHighToLow() {
+        Allure.step("Check all products price sorted from high to low");
         List<WebElement> actualProductsPriceList = driver.findElements(By.cssSelector("td:nth-child(5)"));
         return isListSortedHighToLow(actualProductsPriceList);
     }
 
     public boolean isProductPriceSortedLowToHigh() {
+        Allure.step("Check all products price sorted from low to high");
         List<WebElement> actualProductsPriceList = driver.findElements(By.cssSelector("td:nth-child(5)"));
         return isListSortedLowToHigh(actualProductsPriceList);
     }
 
     public boolean isProductQuantitySortedLowToHigh() {
+        Allure.step("Check all products quantity sorted from low to high");
         List<WebElement> actualProductsPriceList = driver.findElements(By.cssSelector("td:nth-child(8)"));
         return isListSortedLowToHigh(actualProductsPriceList);
     }
+
     public boolean isProductQuantitySortedHighToLow() {
+        Allure.step("Check all products price sorted from high to low");
         List<WebElement> actualProductsPriceList = driver.findElements(By.cssSelector("td:nth-child(8)"));
         return isListSortedHighToLow(actualProductsPriceList);
     }

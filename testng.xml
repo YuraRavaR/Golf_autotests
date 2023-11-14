@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite">
+    <test verbose="2" preserve-order="true" name="D:/it/CHI/Projects/golf_autotests/src/test/java/golftests/ui/uitests">
+        <classes>
+            <class name="golftests.ui.uitests.admin.stocks.Stocks">
+                <methods>
+                    <include name="checkFilterByPrice"/>
+                    <include name="checkFilterByOneCategory"/>
+                    <include name="checkFilterByTwoCategories"/>
+                    <include name="checkSortByPriceHighToLow"/>
+                    <include name="checkSortByPriceLowToHigh"/>
+                    <include name="checkSortByQuantityHighToLow"/>
+                    <include name="checkSortByQuantityLowToHigh"/>
+                    <include name="checkSortAndFilterByPriceAndCategory"/>
+                </methods>
+            </class>
+            <class name="golftests.ui.uitests.auth.ChangePassword">
+                <methods>
+                    <include name="userChangePassword"/>
+                    <include name="userChangePasswordNegative"/>
+                </methods>
+            </class>
+            <class name="golftests.ui.uitests.auth.Login">
+                <methods>
+                    <include name="loginAsAdmin"/>
+                    <include name="loginAsUser"/>
+                    <include name="loginAsUserFalse"/>
+                </methods>
+            </class>
+            <class name="golftests.ui.uitests.auth.Registration">
+                <methods>
+                    <include name="registerAsUser"/>
+                    <include name="registerAsUserFalse"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>

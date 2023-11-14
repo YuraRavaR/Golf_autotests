@@ -4,6 +4,8 @@ import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
@@ -15,7 +17,14 @@ public class Readxls {
     //read .xls file and use it as data provider of "valid log in credentials" (use first page of the file with 2 columns: login and password
     public Object[][] readInvalidLoginCredentials() throws IOException {
 
-        InputStream fis = getClass().getClassLoader().getResourceAsStream(xlsxFileWithTestData);
+//        InputStream fis = getClass().getClassLoader().getResourceAsStream(xlsxFileWithTestData);
+//        InputStream fis = Readxls.class.getClassLoader().getResourceAsStream("xlsxFileWithTestData.xlsx");
+//        ClassLoader classLoader = getClass().getClassLoader();
+//        InputStream fis = classLoader.getResourceAsStream("xlsxFileWithTestData.xlsx");
+//        File file = new File("D:/it/CHI/Projects/golf_autotests/src/main/resources/xlsxFileWithTestData.xlsx");
+//        InputStream fis = new FileInputStream(file);
+
+        InputStream fis = new FileInputStream(xlsxFileWithTestData);
         assert fis != null;
         XSSFWorkbook workbook = new XSSFWorkbook(fis); //work env where we work with file
         XSSFSheet sheet = workbook.getSheet("loginnegativetests"); // choose the "list" name in .xls
@@ -37,7 +46,7 @@ public class Readxls {
 
     public Object[][] readValidLoginCredentials() throws IOException {
 
-        InputStream fis = getClass().getClassLoader().getResourceAsStream(xlsxFileWithTestData);
+        InputStream fis = new FileInputStream(xlsxFileWithTestData);
         assert fis != null;
         XSSFWorkbook workbook = new XSSFWorkbook(fis); //work env where we work with file
         XSSFSheet sheet = workbook.getSheet("loginvalidcredentials"); // choose the "list" name in .xls
@@ -55,7 +64,7 @@ public class Readxls {
 
     public Object[][] readInvalidRegisterCredentials() throws IOException {
 
-        InputStream fis = getClass().getClassLoader().getResourceAsStream(xlsxFileWithTestData);
+        InputStream fis = new FileInputStream(xlsxFileWithTestData);
         assert fis != null;
         XSSFWorkbook workbook = new XSSFWorkbook(fis); //work env where we work with file
         XSSFSheet sheet = workbook.getSheet("registerNegativeTests"); // choose the "list" name in .xls
@@ -81,7 +90,7 @@ public class Readxls {
 
     public Object[][] readInvalidChangePasswordData() throws IOException {
 
-        InputStream fis = getClass().getClassLoader().getResourceAsStream(xlsxFileWithTestData);
+        InputStream fis = new FileInputStream(xlsxFileWithTestData);
         assert fis != null;
         XSSFWorkbook workbook = new XSSFWorkbook(fis); //work env where we work with file
         XSSFSheet sheet = workbook.getSheet("changePasswordNegativeTests"); // choose the "list" name in .xls
