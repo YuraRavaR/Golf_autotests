@@ -1,5 +1,6 @@
 package golf.ui.pages;
 
+import io.qameta.allure.Allure;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -23,17 +24,20 @@ public class ProfilePage extends AbstractPage {
         super(driver, wait);
     }
 
-    public void changePassword(String currentPassword, String newPassword,String confirmNewPassword) {
-        inputTextByElement(currentPassword,currentPasswordInput);
+    public void changePassword(String currentPassword, String newPassword, String confirmNewPassword) {
+        Allure.step("Change password; current password: " + currentPassword + " ,newPassword: " + newPassword
+                + " ,confirmNewPassword: " + confirmNewPassword);
+        inputTextByElement(currentPassword, currentPasswordInput);
         inputTextByElement(newPassword, newPasswordInput);
         inputTextByElement(confirmNewPassword, confirmNewPasswordInput);
         super.clickToElement(newPasswordInput);
     }
 
-    public void clickChangePasswordBtn(){
+    public void clickChangePasswordBtn() {
         super.clickToElement(changePasswordBtn);
     }
-    public void clickSavePasswordBtn(){
+
+    public void clickSavePasswordBtn() {
         super.clickToElement(saveBtn);
     }
 }

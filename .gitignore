@@ -1,3 +1,5 @@
 /.idea/
 *.log
 target/
+allure-results/
+.allure/

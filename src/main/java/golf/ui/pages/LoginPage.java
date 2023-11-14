@@ -1,5 +1,6 @@
 package golf.ui.pages;
 
+import io.qameta.allure.Allure;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -46,6 +47,8 @@ public class LoginPage extends AbstractPage {
     }
 
     public void signUp(String firstName, String lastName, String email, String password) {
+        Allure.step("Sign up with firstName: " + firstName + " ,lastname: " + lastName + " ,email: " + email +
+                " ,password: " + password);
         inputTextByElement(firstName, firstNameInput);
         inputTextByElement(lastName, lastNameInput);
         inputTextByElement(email, emailInput);

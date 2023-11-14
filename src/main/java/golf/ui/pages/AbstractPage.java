@@ -1,5 +1,6 @@
 package golf.ui.pages;
 
+import io.qameta.allure.Allure;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
@@ -21,15 +22,18 @@ public abstract class AbstractPage {
     }
 
     public void openPage(String pageURL) {
+        Allure.step("Open url: " + pageURL);
         driver.get(pageURL);
     }
 
 
     public void assertExactTextAppearedOnPage(String text) {
+        Allure.step("Assert exact text appeared on page: " + text);
         textAssert(exactTextMath, text);
     }
 
     public void inputTextByElement(String text, WebElement element) {
+        Allure.step("input text: " + text + "by element: " + element);
         wait.until(ExpectedConditions.visibilityOf(element));
         element.click();
         element.clear();
@@ -42,6 +46,7 @@ public abstract class AbstractPage {
     }
 
     public boolean waitPageLoaded(WebElement element) {
+        Allure.step("Wait page loaded: " + element);
         try {
             wait.until(ExpectedConditions.visibilityOf(element));
             return true;
@@ -51,6 +56,7 @@ public abstract class AbstractPage {
     }
 
     private void textAssert(String pattern, String text) {
+        Allure.step("Assert text: " + text + " by pattern: " + pattern);
         String locator = String.format(pattern, text);
         try {
             wait.until(
@@ -65,6 +71,7 @@ public abstract class AbstractPage {
     }
 
     public void clickToElement(WebElement element) {
+        Allure.step("Click to element: " + element);
         wait.until(ExpectedConditions.visibilityOf(element));
         element.click();
     }
@@ -75,7 +82,6 @@ public abstract class AbstractPage {
 //        WebElement backdrop = driver.findElement(By.cssSelector(".MuiBackdrop-root"));
 //        clickToElement(backdrop);
 //    }
-
 
 
 }
