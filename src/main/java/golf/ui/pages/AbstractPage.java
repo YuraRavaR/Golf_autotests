@@ -28,25 +28,26 @@ public abstract class AbstractPage {
 
 
     public void assertExactTextAppearedOnPage(String text) {
-        Allure.step("Assert exact text appeared on page: " + text);
+//        Allure.step("Assert exact text appeared on page: " + text);
         textAssert(exactTextMath, text);
     }
 
     public void inputTextByElement(String text, WebElement element) {
-        Allure.step("input text: " + text + "by element: " + element);
+//        Allure.step("input text: " + text + "by element: " + element);
         wait.until(ExpectedConditions.visibilityOf(element));
         element.click();
         element.clear();
         wait.until(ExpectedConditions.textToBePresentInElementValue(element, ""));
         element.sendKeys(text);
-        String enteredText = element.getAttribute("value");
-        if (!enteredText.equals(text)) {
+        String enteredText = element.getAttribute("value").trim();
+        String expectedText = text.trim();
+        if (!enteredText.equals(expectedText)) {
             throw new AssertionError("Entered text does not match the expected text.");
         }
     }
 
     public boolean waitPageLoaded(WebElement element) {
-        Allure.step("Wait page loaded: " + element);
+//        Allure.step("Wait page loaded: " + element);
         try {
             wait.until(ExpectedConditions.visibilityOf(element));
             return true;
@@ -56,7 +57,6 @@ public abstract class AbstractPage {
     }
 
     private void textAssert(String pattern, String text) {
-        Allure.step("Assert text: " + text + " by pattern: " + pattern);
         String locator = String.format(pattern, text);
         try {
             wait.until(
@@ -71,17 +71,12 @@ public abstract class AbstractPage {
     }
 
     public void clickToElement(WebElement element) {
-        Allure.step("Click to element: " + element);
+//        Allure.step("Click to element: " + element);
         wait.until(ExpectedConditions.visibilityOf(element));
         element.click();
     }
 
-//    public void clickByElementFromDropdown(WebElement dropDownList, WebElement element) {
-//        clickToElement(dropDownList); //open drop down
-//        clickToElement(element);  //select Dropdown element
-//        WebElement backdrop = driver.findElement(By.cssSelector(".MuiBackdrop-root"));
-//        clickToElement(backdrop);
-//    }
+
 
 
 }

@@ -34,15 +34,19 @@ public class LoginPage extends AbstractPage {
 
 
     public void login(String email, String password) {
+        Allure.step("Login with email: " + email + " and password: " + password);
         inputTextByElement(email, emailInput);
         inputTextByElement(password, passwordInput);
         loginBtn.click();
     }
 
     public void clickSignUpBtn() {
+        Allure.step("Click to sign up button");
         super.clickToElement(signUpButton);
     }
-    public void clickMyProfileBtn(){
+
+    public void clickMyProfileBtn() {
+        Allure.step("Click to my Profile button");
         super.clickToElement(myProfileBtn);
     }
 
