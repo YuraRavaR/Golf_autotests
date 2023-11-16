@@ -35,7 +35,7 @@ public class Login extends BaseTest {
         Assert.assertTrue(homePage.isUserHomePageLoaded());
     }
 
-   @Test(dataProvider = "InvalidLoginCredentials",dataProviderClass = XlsDataProvider.class)
+    @Test(dataProvider = "InvalidLoginCredentials", dataProviderClass = XlsDataProvider.class)
     public void loginAsUserFalse(String login, String password, String expectedMessage) {
         HomePage homePage = new HomePage(driver, wait);
         LoginPage loginPage = new LoginPage(driver, wait);
@@ -43,6 +43,5 @@ public class Login extends BaseTest {
         homePage.clickProfileButton();
         loginPage.login(login, password);
         loginPage.assertExactTextAppearedOnPage(expectedMessage);
-//        Assert.assertFalse(homePage.isUserHomePageLoaded());
     }
 }

@@ -127,10 +127,12 @@ public class StocksAdminPage extends AbstractPage {
     }
 
     public void clickPriceSortBtn() {
+        Allure.step("Click price sort button");
         super.clickToElement(priceSortBtn);
     }
 
     public void clickQuantitySortBtn() {
+        Allure.step("Click price sort button");
         super.clickToElement(quantitySortBtn);
     }
 
