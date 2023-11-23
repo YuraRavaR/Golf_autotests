@@ -28,12 +28,10 @@ public abstract class AbstractPage {
 
 
     public void assertExactTextAppearedOnPage(String text) {
-//        Allure.step("Assert exact text appeared on page: " + text);
         textAssert(exactTextMath, text);
     }
 
     public void inputTextByElement(String text, WebElement element) {
-//        Allure.step("input text: " + text + "by element: " + element);
         wait.until(ExpectedConditions.visibilityOf(element));
         element.click();
         element.clear();
@@ -47,7 +45,6 @@ public abstract class AbstractPage {
     }
 
     public boolean waitPageLoaded(WebElement element) {
-//        Allure.step("Wait page loaded: " + element);
         try {
             wait.until(ExpectedConditions.visibilityOf(element));
             return true;
@@ -71,12 +68,7 @@ public abstract class AbstractPage {
     }
 
     public void clickToElement(WebElement element) {
-//        Allure.step("Click to element: " + element);
         wait.until(ExpectedConditions.visibilityOf(element));
         element.click();
     }
-
-
-
-
 }

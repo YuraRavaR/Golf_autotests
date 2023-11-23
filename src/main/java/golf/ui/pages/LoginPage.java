@@ -24,8 +24,14 @@ public class LoginPage extends AbstractPage {
     @FindBy(xpath = "//div[text()='My profile']")
     WebElement myProfileBtn;
 
+    @FindBy(xpath = "//div[text()='Forgot password']")
+    WebElement forgotPasswordBtn;
+
     @FindBy(xpath = "//button[text()='Sign up']")
     WebElement signUpButton;
+    @FindBy(xpath = "//button[text()='Change password']")
+    WebElement changePasswordBtn;
+
 
 
     public LoginPage(WebDriver driver, WebDriverWait wait) {
@@ -48,6 +54,16 @@ public class LoginPage extends AbstractPage {
     public void clickMyProfileBtn() {
         Allure.step("Click to my Profile button");
         super.clickToElement(myProfileBtn);
+    }
+
+    public void clickForgotPasswordBtn() {
+        Allure.step("Click to Forgot password button");
+        super.clickToElement(forgotPasswordBtn);
+    }
+
+    public void clickChangePasswordBtn() {
+        Allure.step("Click to Change password button");
+        super.clickToElement(changePasswordBtn);
     }
 
     public void signUp(String firstName, String lastName, String email, String password) {
