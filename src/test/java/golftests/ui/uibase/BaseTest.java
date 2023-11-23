@@ -10,7 +10,8 @@ import org.testng.annotations.BeforeMethod;
 import java.time.Duration;
 
 public class BaseTest {
-    protected WebDriver driver;
+
+    protected static WebDriver driver;
     protected WebDriverWait wait;
 
     @BeforeMethod
@@ -27,5 +28,7 @@ public class BaseTest {
             driver.quit();
     }
 
-
+    public static WebDriver getDriver() {
+        return driver;
+    }
 }

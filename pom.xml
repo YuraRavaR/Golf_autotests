@@ -8,7 +8,20 @@
     <artifactId>golf_autotests</artifactId>
     <version>1.1.1</version>
 
+    <repositories>
+        <repository>
+            <id>jitpack.io</id>
+            <url>https://jitpack.io</url>
+        </repository>
+
+    </repositories>
     <dependencies>
+        <dependency>
+            <groupId>com.github.YuraRavaR</groupId>
+            <artifactId>Email-management</artifactId>
+            <version>bdd938ef93</version>
+        </dependency>
+
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-java</artifactId>
@@ -31,7 +44,11 @@
             <version>7.7.1</version>
             <scope>test</scope>
         </dependency>
-
+        <dependency>
+            <groupId>org.jsoup</groupId>
+            <artifactId>jsoup</artifactId>
+            <version>1.14.3</version>
+        </dependency>
 
         <dependency>
             <groupId>io.rest-assured</groupId>
