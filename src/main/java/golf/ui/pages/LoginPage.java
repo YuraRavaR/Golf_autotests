@@ -27,11 +27,31 @@ public class LoginPage extends AbstractPage {
     @FindBy(xpath = "//div[text()='Forgot password']")
     WebElement forgotPasswordBtn;
 
+    @FindBy(xpath = "//button[text()='Save']")
+    WebElement savePasswordBtn;
+
+    @FindBy(xpath = "//button[text()='Log in with the temporary password']")
+    WebElement loginWithTempPasswordBtn;
+
     @FindBy(xpath = "//button[text()='Sign up']")
     WebElement signUpButton;
     @FindBy(xpath = "//button[text()='Change password']")
     WebElement changePasswordBtn;
 
+    @FindBy(xpath = "//button[text()='Confirm']")
+    WebElement confirmTempPasswordBtn;
+
+    @FindBy(xpath = "//input[@placeholder='New password']")
+    WebElement newPasswordInput;
+
+    @FindBy(xpath = "//input[@placeholder='Confirm new password']")
+    WebElement confirmNewPasswordInput;
+
+    @FindBy(xpath = "//input[@id='outlined-adornment-password']")
+    WebElement temporaryPasswordInput;
+
+    @FindBy(xpath = "//button[text()='I remember the password']")
+    WebElement rememberPasswordBtn;
 
 
     public LoginPage(WebDriver driver, WebDriverWait wait) {
@@ -65,6 +85,38 @@ public class LoginPage extends AbstractPage {
         Allure.step("Click to Change password button");
         super.clickToElement(changePasswordBtn);
     }
+
+    public void clickRememberThePasswordBtn() {
+        Allure.step("Click to I remember the password button");
+        super.clickToElement(rememberPasswordBtn);
+    }
+
+    public void inputEmail(String value) {
+        Allure.step("Input email: " + value);
+        inputTextByElement(value, emailInput);
+    }
+
+    public void inputTempPassword(String value) {
+        Allure.step("Input temporary password: " + value);
+        inputTextByElement(value, temporaryPasswordInput);
+    }
+
+    public void clickConfirmPasswordBtn() {
+        Allure.step("Click confirm password button");
+        super.clickToElement(confirmTempPasswordBtn);
+    }
+
+    public void clickSavePasswordBtn() {
+        Allure.step("Click save password button");
+        super.clickToElement(savePasswordBtn);
+    }
+
+    public void inputNewPassword(String newPassword, String confirmNewPassword) {
+        Allure.step("Input new password: " + newPassword + " and confirm new password: " + confirmNewPassword);
+        inputTextByElement(newPassword, newPasswordInput);
+        inputTextByElement(confirmNewPassword, confirmNewPasswordInput);
+    }
+
 
     public void signUp(String firstName, String lastName, String email, String password) {
         Allure.step("Sign up with firstName: " + firstName + " ,lastname: " + lastName + " ,email: " + email +
