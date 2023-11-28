@@ -11,6 +11,10 @@ public class Constant {
     public static String CLIENT_MAIL_PASSWORD_831 = getProperty("clientMailPassword831");
 
     public static String SIGN_UP_BASE_PATH = getProperty("signUpBasePath");
+
+    public static String SIGN_IN_BASE_PATH = getProperty("logInBasePath");
+
+    public static String PASSWORD_RECOVERY_BASE_PATH = getProperty("passwordRecoveryBasePath");
     public static String BASE_URL_UI = getProperty("baseUrlUI");
     public static String xlsxFileWithTestData = getProperty("xlsxFileWithTestData");
 
