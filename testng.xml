@@ -15,6 +15,7 @@
                     <include name="checkSortAndFilterByPriceAndCategory"/>
                 </methods>
             </class>
+            <class name="golftests.ui.uitests.auth.RecoveryPassword"/>
             <class name="golftests.ui.uitests.auth.ChangePassword">
                 <methods>
                     <include name="userChangePassword"/>

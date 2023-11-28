@@ -21,13 +21,17 @@ public class HomePage extends AbstractPage {
     WebElement stockBtn;
 
 
-
     public HomePage(WebDriver driver, WebDriverWait wait) {
         super(driver, wait);
     }
 
     public void clickProfileButton() {
         Allure.step("Click profile button");
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
         super.clickToElement(profileButton);
     }
 
@@ -41,7 +45,7 @@ public class HomePage extends AbstractPage {
         return super.waitPageLoaded(clientPanelElement);
     }
 
-    public void clickStockBtn(){
+    public void clickStockBtn() {
         Allure.step("Click Stock button");
         super.clickToElement(stockBtn);
     }
